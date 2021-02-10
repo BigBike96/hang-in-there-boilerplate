@@ -1,4 +1,16 @@
 // query selector variables go here 👇
+var posterImage = document.querySelector('.poster-quote');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+
+
+
+// query selectors for id's under "Create your own motivational poster"
+var posterImageInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title');
+var posterQuoteInput = document.querySelector('#poster-quote');
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,9 +115,28 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+
+// When the page loads, we should see a poster with a randomly selected image, title, and quote
+    // - this may be done in a single function or multiple functions
+
+// We'll need to
+// - capture random data from the arrays
+// - pass that data into class Poster, instantiate a new Cover
+
+
+function createRandomPoster() {
+
+}
+
+function displayRandomCover() {
+
+}
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
