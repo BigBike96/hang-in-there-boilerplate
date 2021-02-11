@@ -8,6 +8,8 @@ var createPosterButton = document.querySelector('.show-form');
 
 var mainPage = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
+var savePosters = document.querySelector('.saved-posters');
+var showSaved = document.querySelector('.show-saved');
 // innerHtmL
 
 // query selectors for id's under "Create your own motivational poster"
@@ -125,7 +127,12 @@ showRandomButton.addEventListener('click', createRandomPoster);
 createPosterButton.addEventListener('click', function() {
   mainPage.classList.add('hidden');
   posterForm.classList.remove('hidden');
-})
+});
+
+showSaved.addEventListener('click', function() {
+  mainPage.classList.add('hidden');
+  savePosters.classList.remove('hidden');
+});
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
