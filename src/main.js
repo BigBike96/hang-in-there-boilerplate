@@ -136,8 +136,13 @@ showSaved.addEventListener('click', function() {
   savePosters.classList.remove('hidden');
 });
 
-showMain.addEventListener('click', function(){
+showMain.addEventListener('click', function() {
   posterForm.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+});
+
+backToMain.addEventListener('click', function(){
+  savePosters.classList.add('hidden');
   mainPage.classList.remove('hidden');
 })
 
