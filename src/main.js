@@ -3,6 +3,8 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
+var showRandomButton = document.querySelector('.show-random');
+
 // innerHtmL
 
 // query selectors for id's under "Create your own motivational poster"
@@ -115,6 +117,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
+// showRandomButton.addEventListener('click', createRandomPoster);
 //  window.onload
 
 // functions and event handlers go here 👇
