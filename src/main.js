@@ -117,7 +117,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
-// showRandomButton.addEventListener('click', createRandomPoster);
+showRandomButton.addEventListener('click', createRandomPoster);
 //  window.onload
 
 // functions and event handlers go here 👇
