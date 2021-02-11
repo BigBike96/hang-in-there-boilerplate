@@ -3,7 +3,7 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
-innerHtml
+// innerHtmL
 
 // query selectors for id's under "Create your own motivational poster"
 var posterImageInput = document.querySelector('#poster-image-url');
@@ -114,7 +114,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('onload', displayRandomPoster);
+window.addEventListener('load', createRandomPoster);
 //  window.onload
 
 // functions and event handlers go here 👇
@@ -131,12 +131,11 @@ function createRandomPoster() {
   var titleRandom = titles[getRandomIndex(titles)];
   var quoteRandom = quotes[getRandomIndex(quotes)];
   currentPoster = new Poster(imageRandom, titleRandom, quoteRandom);
-
+  displayRandomPoster();
 }
 
 function displayRandomPoster() {
-  createRandomPoster();
-  posterImage.innerText = currentPoster.imageURL;
+  posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
 }
