@@ -21,7 +21,7 @@ var posterQuoteInput = document.querySelector('#poster-quote');
 
 
 
-// we've provided you with some data to work with 👇
+// we've provided you with some data to work with 👇 (state of the main.js file is made of these global variables)
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -125,26 +125,27 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
-//  window.onload
+
 createPosterButton.addEventListener('click', function() {
-  mainPage.classList.add('hidden');
-  posterForm.classList.remove('hidden');
+  changePage(mainPage, posterForm);
 });
 
 showSaved.addEventListener('click', function() {
-  mainPage.classList.add('hidden');
-  savePosters.classList.remove('hidden');
+  changePage(mainPage, savePosters);
 });
 
 showMain.addEventListener('click', function() {
-  posterForm.classList.add('hidden');
-  mainPage.classList.remove('hidden');
+  changePage(posterForm, mainPage);
 });
 
 backToMain.addEventListener('click', function(){
-  savePosters.classList.add('hidden');
-  mainPage.classList.remove('hidden');
+  changePage(savePosters, mainPage);
 })
+
+function changePage(addHidden, removeHidden) {
+  addHidden.classList.add('hidden');
+  removeHidden.classList.remove('hidden');
+}
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
