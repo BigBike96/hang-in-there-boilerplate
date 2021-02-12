@@ -125,15 +125,20 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
-//  window.onload
+
+
+
+
 createPosterButton.addEventListener('click', function() {
-  mainPage.classList.add('hidden');
-  posterForm.classList.remove('hidden');
+  changePage(mainPage, posterForm);
 });
+// createPosterButton.addEventListener('click', function() {
+//   mainPage.classList.add('hidden');
+//   posterForm.classList.remove('hidden');
+// });
 
 showSaved.addEventListener('click', function() {
-  mainPage.classList.add('hidden');
-  savePosters.classList.remove('hidden');
+  changePage(mainPage, savePosters);
 });
 
 showMain.addEventListener('click', function() {
@@ -145,6 +150,11 @@ backToMain.addEventListener('click', function(){
   savePosters.classList.add('hidden');
   mainPage.classList.remove('hidden');
 })
+
+function changePage(addHidden, removeHidden) {
+  addHidden.classList.add('hidden');
+  removeHidden.classList.remove('hidden');
+}
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
