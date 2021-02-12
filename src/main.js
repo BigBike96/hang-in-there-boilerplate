@@ -139,7 +139,7 @@ showMain.addEventListener('click', function() {
 });
 
 backToMain.addEventListener('click', function(){
-changePage(savePosters, mainPage);
+  changePage(savePosters, mainPage);
 })
 
 function changePage(addHidden, removeHidden) {
