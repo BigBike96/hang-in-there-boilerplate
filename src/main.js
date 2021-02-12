@@ -12,8 +12,6 @@ var posterImageInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
 
-
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
