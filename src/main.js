@@ -139,8 +139,7 @@ showMain.addEventListener('click', function() {
 });
 
 backToMain.addEventListener('click', function(){
-  savePosters.classList.add('hidden');
-  mainPage.classList.remove('hidden');
+changePage(savePosters, mainPage);
 })
 
 function changePage(addHidden, removeHidden) {
