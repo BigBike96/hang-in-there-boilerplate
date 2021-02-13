@@ -12,6 +12,8 @@ var savePosters = document.querySelector('.saved-posters');
 var showSaved = document.querySelector('.show-saved');
 var showMain = document.querySelector('.show-main');
 var backToMain = document.querySelector('.back-to-main');
+
+var showPoster = document.querySelector('.make-poster');
 // innerHtmL
 
 // query selectors for id's under "Create your own motivational poster"
@@ -138,23 +140,23 @@ showMain.addEventListener('click', function() {
   changePage(posterForm, mainPage);
 });
 
-backToMain.addEventListener('click', function(){
+backToMain.addEventListener('click', function() {
   changePage(savePosters, mainPage);
 })
+
+showPoster.addEventListener('click', createPoster);
+
+function createPoster(){
+  event.preventDefault();
+  currentPoster = new Poster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
+  changePage(posterForm, mainPage);
+  displayRandomPoster();
+}
 
 function changePage(addHidden, removeHidden) {
   addHidden.classList.add('hidden');
   removeHidden.classList.remove('hidden');
 }
-
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-
-// When the page loads, we should see a poster with a randomly selected image, title, and quote
-    // - this may be done in a single function or multiple functions
-// We'll need to
-// - capture random data from the arrays
-// - pass that data into class Poster, instantiate a new Cover
 
 function createRandomPoster() {
   var imageRandom = images[getRandomIndex(images)];
