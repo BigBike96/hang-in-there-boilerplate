@@ -190,5 +190,7 @@ function getRandomIndex(array) {
 }
 
 function saveCurrent(poster){
-  savedPosters.push(poster);
+  if(!savedPosters.includes(poster)){
+      savedPosters.push(poster);
+  }
 }
