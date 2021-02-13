@@ -14,6 +14,8 @@ var showMain = document.querySelector('.show-main');
 var backToMain = document.querySelector('.back-to-main');
 
 var showPoster = document.querySelector('.make-poster');
+var savePosterButton = document.querySelector('.save-poster');
+var posterGrid = document.querySelector('.saved-posters-grid');
 // innerHtmL
 // var saveCurrentPoster = document.querySelector('.save-poster');
 
@@ -135,6 +137,7 @@ createPosterButton.addEventListener('click', function() {
 
 showSaved.addEventListener('click', function() {
   changePage(mainPage, savePosters);
+  displaySavedPosters();
 });
 
 showMain.addEventListener('click', function() {
@@ -146,6 +149,10 @@ backToMain.addEventListener('click', function() {
 })
 
 showPoster.addEventListener('click', createPoster);
+
+savePosterButton.addEventListener('click', function(){
+  saveCurrent(currentPoster);
+});
 
 function createPoster() {
   event.preventDefault();
@@ -175,11 +182,29 @@ function displayRandomPoster() {
 }
 
 function savePoster(inputPoster) {
-  images.push(inputPoster.image);
+  images.push(inputPoster.imageURL);
   titles.push(inputPoster.title);
   quotes.push(inputPoster.quote);
 }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function saveCurrent(poster) {
+  if(!savedPosters.includes(poster)) {
+      savedPosters.push(poster);
+  }
+}
+
+function displaySavedPosters() {
+  posterGrid.innerHTML = "";
+  for(var i = 0; i < savedPosters.length; i++) {
+    posterGrid.innerHTML +=
+    `<article class="poster">
+      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h1 class="poster-title">${savedPosters[i].title}</h1>
+      <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+     </article>`;
+  }
 }
