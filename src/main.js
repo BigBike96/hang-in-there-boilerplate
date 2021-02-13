@@ -15,6 +15,7 @@ var backToMain = document.querySelector('.back-to-main');
 
 var showPoster = document.querySelector('.make-poster');
 // innerHtmL
+// var saveCurrentPoster = document.querySelector('.save-poster');
 
 // query selectors for id's under "Create your own motivational poster"
 var posterImageInput = document.querySelector('#poster-image-url');
@@ -146,9 +147,10 @@ backToMain.addEventListener('click', function() {
 
 showPoster.addEventListener('click', createPoster);
 
-function createPoster(){
+function createPoster() {
   event.preventDefault();
   currentPoster = new Poster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
+  savePoster(currentPoster);
   changePage(posterForm, mainPage);
   displayRandomPoster();
 }
@@ -170,6 +172,12 @@ function displayRandomPoster() {
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
+}
+
+function savePoster(inputPoster) {
+  images.push(inputPoster.image);
+  titles.push(inputPoster.title);
+  quotes.push(inputPoster.quote);
 }
 
 function getRandomIndex(array) {
