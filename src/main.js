@@ -119,6 +119,7 @@ var currentPoster;
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 showPoster.addEventListener('click', createPoster);
+savePosterButton.addEventListener('click', saveCurrent);
 
 createPosterButton.addEventListener('click', function() {
   changePage(mainPage, posterForm);
@@ -137,9 +138,6 @@ backToMain.addEventListener('click', function() {
   changePage(savePosters, mainPage);
 })
 
-savePosterButton.addEventListener('click', function() {
-  saveCurrent();
-});
 
 posterGrid.addEventListener('dblclick', function(event) {
   var miniPoster = event.target.closest('.mini-poster');
