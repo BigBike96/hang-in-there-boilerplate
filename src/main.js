@@ -141,12 +141,22 @@ savePosterButton.addEventListener('click', function() {
   saveCurrent();
 });
 
+posterGrid.addEventListener('dblclick', function(event) {
+  var miniPoster = event.target.closest('.mini-poster');
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(Number(miniPoster.id) === savedPosters[i].id){
+      savedPosters.splice(i, 1);
+      displaySavedPosters();
+    }
+  }
+})
+
 function changePage(addHidden, removeHidden) {
   addHidden.classList.add('hidden');
   removeHidden.classList.remove('hidden');
 }
 
-function createPoster() {
+function createPoster(event) {
   event.preventDefault();
   buildNewCover(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
   savePoster();
@@ -191,10 +201,10 @@ function displaySavedPosters() {
   posterGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
     posterGrid.innerHTML +=
-    `<article class="mini-poster">
-      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-      <h2 class="poster-title">${savedPosters[i].title}</h2>
-      <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+    `<article class="mini-poster" id=${savedPosters[i].id}>
+      <img class="" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h2 class="">${savedPosters[i].title}</h2>
+      <h4 class="">${savedPosters[i].quote}</h4>
      </article>`;
   }
 }
