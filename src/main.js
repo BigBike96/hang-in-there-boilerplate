@@ -158,7 +158,7 @@ function changePage(addHidden, removeHidden) {
 
 function createPoster(event) {
   event.preventDefault();
-  buildNewCover(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
+  buildNewPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
   savePoster();
   changePage(posterForm, mainPage);
 }
@@ -167,10 +167,10 @@ function createRandomPoster() {
   var imageRandom = images[getRandomIndex(images)];
   var titleRandom = titles[getRandomIndex(titles)];
   var quoteRandom = quotes[getRandomIndex(quotes)];
-  buildNewCover(imageRandom, titleRandom, quoteRandom);
+  buildNewPoster(imageRandom, titleRandom, quoteRandom);
 }
 
-function buildNewCover(image, title, quote) {
+function buildNewPoster(image, title, quote) {
   currentPoster = new Poster(image, title, quote);
   displayPoster();
 }
