@@ -1,32 +1,21 @@
-// query selector variables go here 👇
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
-
 var showRandomButton = document.querySelector('.show-random');
 var createPosterButton = document.querySelector('.show-form');
-
 var mainPage = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 var savePosters = document.querySelector('.saved-posters');
 var showSaved = document.querySelector('.show-saved');
 var showMain = document.querySelector('.show-main');
 var backToMain = document.querySelector('.back-to-main');
-
-var showPoster = document.querySelector('.make-poster');
 var savePosterButton = document.querySelector('.save-poster');
+var showPoster = document.querySelector('.make-poster');
 var posterGrid = document.querySelector('.saved-posters-grid');
-// innerHtmL
-// var saveCurrentPoster = document.querySelector('.save-poster');
-
-// query selectors for id's under "Create your own motivational poster"
 var posterImageInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
 
-
-
-// we've provided you with some data to work with 👇 (state of the main.js file is made of these global variables)
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -127,9 +116,9 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
+showPoster.addEventListener('click', createPoster);
 
 createPosterButton.addEventListener('click', function() {
   changePage(mainPage, posterForm);
@@ -148,34 +137,35 @@ backToMain.addEventListener('click', function() {
   changePage(savePosters, mainPage);
 })
 
-showPoster.addEventListener('click', createPoster);
-
-savePosterButton.addEventListener('click', function(){
-  saveCurrent(currentPoster);
+savePosterButton.addEventListener('click', function() {
+  saveCurrent();
 });
-
-function createPoster() {
-  event.preventDefault();
-  currentPoster = new Poster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
-  savePoster();
-  changePage(posterForm, mainPage);
-  displayRandomPoster();
-}
 
 function changePage(addHidden, removeHidden) {
   addHidden.classList.add('hidden');
   removeHidden.classList.remove('hidden');
 }
 
+function createPoster() {
+  event.preventDefault();
+  buildNewCover(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
+  savePoster();
+  changePage(posterForm, mainPage);
+}
+
 function createRandomPoster() {
   var imageRandom = images[getRandomIndex(images)];
   var titleRandom = titles[getRandomIndex(titles)];
   var quoteRandom = quotes[getRandomIndex(quotes)];
-  currentPoster = new Poster(imageRandom, titleRandom, quoteRandom);
-  displayRandomPoster();
+  buildNewCover(imageRandom, titleRandom, quoteRandom);
 }
 
-function displayRandomPoster() {
+function buildNewCover(image, title, quote) {
+  currentPoster = new Poster(image, title, quote);
+  displayPoster();
+}
+
+function displayPoster() {
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
@@ -186,25 +176,20 @@ function savePoster() {
   titles.push(currentPoster.title);
   quotes.push(currentPoster.quote);
 }
-// function savePoster(inputPoster) {
-//   images.push(inputPoster.imageURL);
-//   titles.push(inputPoster.title);
-//   quotes.push(inputPoster.quote);
-// }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function saveCurrent(poster) {
-  if(!savedPosters.includes(poster)) {
-      savedPosters.push(poster);
+function saveCurrent() {
+  if(!savedPosters.includes(currentPoster)) {
+      savedPosters.push(currentPoster);
   }
 }
 
 function displaySavedPosters() {
   posterGrid.innerHTML = "";
-  for(var i = 0; i < savedPosters.length; i++) {
+  for (var i = 0; i < savedPosters.length; i++) {
     posterGrid.innerHTML +=
     `<article class="mini-poster">
       <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
