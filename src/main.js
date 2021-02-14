@@ -157,7 +157,7 @@ savePosterButton.addEventListener('click', function(){
 function createPoster() {
   event.preventDefault();
   currentPoster = new Poster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
-  savePoster(currentPoster);
+  savePoster();
   changePage(posterForm, mainPage);
   displayRandomPoster();
 }
@@ -181,11 +181,16 @@ function displayRandomPoster() {
   posterQuote.innerText = currentPoster.quote;
 }
 
-function savePoster(inputPoster) {
-  images.push(inputPoster.imageURL);
-  titles.push(inputPoster.title);
-  quotes.push(inputPoster.quote);
+function savePoster() {
+  images.push(currentPoster.imageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
 }
+// function savePoster(inputPoster) {
+//   images.push(inputPoster.imageURL);
+//   titles.push(inputPoster.title);
+//   quotes.push(inputPoster.quote);
+// }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
