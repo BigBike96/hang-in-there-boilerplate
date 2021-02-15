@@ -119,6 +119,7 @@ var currentPoster;
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 showPoster.addEventListener('click', createPoster);
+savePosterButton.addEventListener('click', saveCurrent);
 
 createPosterButton.addEventListener('click', function() {
   changePage(mainPage, posterForm);
@@ -135,21 +136,17 @@ showMain.addEventListener('click', function() {
 
 backToMain.addEventListener('click', function() {
   changePage(savePosters, mainPage);
-})
-
-savePosterButton.addEventListener('click', function() {
-  saveCurrent();
 });
 
 posterGrid.addEventListener('dblclick', function(event) {
   var miniPoster = event.target.closest('.mini-poster');
   for (var i = 0; i < savedPosters.length; i++) {
-    if(Number(miniPoster.id) === savedPosters[i].id){
+    if (Number(miniPoster.id) === savedPosters[i].id) {
       savedPosters.splice(i, 1);
       displaySavedPosters();
     }
   }
-})
+});
 
 function changePage(addHidden, removeHidden) {
   addHidden.classList.add('hidden');
@@ -158,19 +155,25 @@ function changePage(addHidden, removeHidden) {
 
 function createPoster(event) {
   event.preventDefault();
-  buildNewCover(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
+  buildNewPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
   savePoster();
   changePage(posterForm, mainPage);
+}
+
+function saveCurrent() {
+  if(!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
 
 function createRandomPoster() {
   var imageRandom = images[getRandomIndex(images)];
   var titleRandom = titles[getRandomIndex(titles)];
   var quoteRandom = quotes[getRandomIndex(quotes)];
-  buildNewCover(imageRandom, titleRandom, quoteRandom);
+  buildNewPoster(imageRandom, titleRandom, quoteRandom);
 }
 
-function buildNewCover(image, title, quote) {
+function buildNewPoster(image, title, quote) {
   currentPoster = new Poster(image, title, quote);
   displayPoster();
 }
@@ -189,12 +192,6 @@ function savePoster() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
-
-function saveCurrent() {
-  if(!savedPosters.includes(currentPoster)) {
-      savedPosters.push(currentPoster);
-  }
 }
 
 function displaySavedPosters() {
