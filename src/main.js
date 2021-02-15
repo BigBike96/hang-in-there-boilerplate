@@ -182,6 +182,7 @@ function displayPoster() {
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
+  posterImage.alt = "poster picture";
 }
 
 function savePoster() {
@@ -199,7 +200,7 @@ function displaySavedPosters() {
   for (var i = 0; i < savedPosters.length; i++) {
     posterGrid.innerHTML +=
     `<article class="mini-poster" id=${savedPosters[i].id}>
-      <img class="" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <img class="" src="${savedPosters[i].imageURL}" alt="poster picture">
       <h2 class="">${savedPosters[i].title}</h2>
       <h4 class="">${savedPosters[i].quote}</h4>
      </article>`;
